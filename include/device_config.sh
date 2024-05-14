@@ -1,0 +1,1 @@
+../device_configs/sony_pdx203.sh
