@@ -3,6 +3,7 @@ set -e
 
 ### variables ###
 export _workdir="${PWD}/build"
+export _cachedir="${PWD}/cache"
 export _outdir="${PWD}/out"
 
 ### include ###
@@ -67,7 +68,7 @@ download_and_handle_tarball() {
             rm ./"${filename}"
         popd
     else
-        print_info "${filename} is already downloaded, skipping..."
+        print_info "${_workdir}/${extract_dir} already exists, skipping..."
     fi
 }
 

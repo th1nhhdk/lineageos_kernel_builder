@@ -54,7 +54,7 @@ download_kernel() {
             "https://github.com/th1nhhdk/${kernel_dir}.git" \
             "${_workdir}/${kernel_dir}"
     else
-        print_info "${kernel_dir} is already downloaded, skipping..."
+        print_info "${_workdir}/${kernel_dir} is already there, skipping..."
     fi
 }
 

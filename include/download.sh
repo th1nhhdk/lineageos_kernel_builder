@@ -7,10 +7,16 @@ download_clang() {
 }
 
 download_clang_host_linux_x86() {
-	download_and_handle_tarball \
-		"prebuilts/clang/host/linux-x86" \
-		"clang_host_linux_x86-${aosp_tag}.tar.gz" \
-		"https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/${aosp_tag}.tar.gz"
+	if [ ! -d "${_workdir}/prebuilts/clang/host/linux-x86" ] && [ -d "${_cachedir}/linux-x86" ]; then
+		print_info "Found cached prebuilts/clang/host/linux-x86, using it instead..."
+		mkdir -p "${_workdir}/prebuilts/clang/host/"
+		cp -r "${_cachedir}/linux-x86" "${_workdir}/prebuilts/clang/host/"
+	else
+		download_and_handle_tarball \
+			"prebuilts/clang/host/linux-x86" \
+			"clang_host_linux_x86-${aosp_tag}.tar.gz" \
+			"https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/${aosp_tag}.tar.gz"
+	fi
 }
 
 download_gcc_aarch64() {

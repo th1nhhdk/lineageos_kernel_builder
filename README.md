@@ -26,5 +26,13 @@ lineageos_kernel_builder.sh make_anykernel3_zip # ${enable_anykernel3_zip} needs
 
 - You can also run `build_all_configs.sh` to build for all device configs in `./device_configs/`.
 
+- **Pro Tip**: Because `clang_host_linux_x86` is very big (about 13GB), you can cache it to avoid redownloading everytime you build the Kernel:
+```bash
+lineageos_kernel_builder.sh download_sources
+mkdir -p ./cache/
+cp -r ./build/prebuilts/clang/host/linux-x86 ./cache/
+```
+- Now everytime you build it will use the cached `clang_host_linux_x86` instead.
+
 ## Differences compared to building with the whole LineageOS ROM
 - none (as far as I know)

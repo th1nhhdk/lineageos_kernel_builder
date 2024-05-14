@@ -53,7 +53,7 @@ download_kernel() {
             "https://github.com/LineageOS/${kernel_dir}.git" \
             "${_workdir}/${kernel_dir}"
     else
-        print_info "${kernel_dir} is already downloaded, skipping..."
+        print_info "${_workdir}/${kernel_dir} already exists, skipping..."
     fi
 }
 
