@@ -29,7 +29,7 @@ print_info() {
 
 print_help() {
 	echo "Usage: ${0} {help|download_sources|make_defconfig|make_menuconfig|make_kernel|make_anykernel3_zip}"
-	[[ -n "${1}" ]] && print_error "No arguments specified."
+	[[ -n "${1}" ]] && print_error "Invalid argument."
 }
 
 pushd() { command pushd "$@" > /dev/null; }
