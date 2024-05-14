@@ -1,13 +1,13 @@
-# lineageos_kernel_builder
+# lineageos_kernel_builder #
 Bash script to build a custom LineageOS Kernel without having to download unnecessary source code.
 
-## Supported devices
+## Supported devices ##
 - Sony Xperia 1 II (`pdx203`)
 - Sony Xperia 5 II (`pdx206`) (untested, but should work)
 - OnePlus 6 (`enchilada`) (untested)
 - OnePlus 6T (`fajita`) (untested)
 
-## How to use
+## How to use ##
 - Check `./config.sh` for configuration options.
 
 - Symlink a device configuration file from `./device_configs/` to `./include/device_config.sh` before running `lineageos_kernel_builder.sh`, for example:
@@ -26,13 +26,15 @@ lineageos_kernel_builder.sh make_anykernel3_zip # ${enable_anykernel3_zip} needs
 
 - You can also run `build_all_configs.sh` to build for all device configs in `./device_configs/`.
 
-- **Pro Tip**: Because `clang_host_linux_x86` is very big (about 13GB), you can cache it to avoid redownloading everytime you build the Kernel:
+## (Recommended) Using cached `prebuilts_clang_host_linux_x86` ##
+- Because `prebuilts_clang_host_linux_x86` is very big (about 13GB!), you can cache it to avoid redownloading everytime you build the Kernel:
 ```bash
 lineageos_kernel_builder.sh download_sources
 mkdir -p ./cache/
-cp -r ./build/prebuilts/clang/host/linux-x86 ./cache/
+source ./include/device_config.sh
+cp -r ./build/prebuilts/clang/host/linux-x86 ./cache/prebuilts_clang_host_linux_x86-${aosp_tag}
 ```
-- Now everytime you build it will use the cached `clang_host_linux_x86` instead.
+- Now everytime you build the script will use the cached `prebuilts_clang_host_linux_x86` instead.
 
-## Differences compared to building with the whole LineageOS ROM
+## Differences compared to building with the whole LineageOS ROM ##
 - none (as far as I know)

@@ -7,10 +7,10 @@ download_clang() {
 }
 
 download_clang_host_linux_x86() {
-	if [ ! -d "${_workdir}/prebuilts/clang/host/linux-x86" ] && [ -d "${_cachedir}/linux-x86" ]; then
-		print_info "Found cached prebuilts/clang/host/linux-x86, using it instead..."
+	if [ ! -d "${_workdir}/prebuilts/clang/host/linux-x86" ] && [ -d "${_cachedir}/prebuilts_clang_host_linux_x86-${aosp_tag}" ]; then
+		print_info "Found cached prebuilts_clang_host_linux_x86-${aosp_tag}, using it instead..."
 		mkdir -p "${_workdir}/prebuilts/clang/host/"
-		cp -r "${_cachedir}/linux-x86" "${_workdir}/prebuilts/clang/host/"
+		cp -r "${_cachedir}/prebuilts_clang_host_linux_x86-${aosp_tag}" "${_workdir}/prebuilts/clang/host/linux-x86"
 	else
 		download_and_handle_tarball \
 			"prebuilts/clang/host/linux-x86" \
