@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+### variables ###
 export _workdir="${PWD}/build"
 
 ### colors ###
@@ -9,10 +10,16 @@ export F_BOLD="\033[1m"
 export C_WHITE="\033[38;5;15m"
 export C_BLUE="\033[48;5;12m"
 
+### fn ###
 print_info() {
     echo -e "${F_BOLD}${C_WHITE}${C_BLUE}INFO:${NO_FORMAT}" "${1}"
 }
 
+### Quiet pushd & popd ###
+pushd() { command pushd "$@" > /dev/null; }
+popd() { command popd "$@" > /dev/null; }
+
+### main ###
 print_info "Building for all device configs in ${PWD}/device_configs/ ..."
 
 pushd "${PWD}/device_configs/"

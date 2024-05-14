@@ -29,10 +29,11 @@ print_info() {
 }
 
 print_help() {
-	echo "Usage: ${0} {help|download_sources|make_defconfig|make_menuconfig|make_kernel|make_anykernel3_zip}"
+	echo -e "${F_BOLD}${C_WHITE}${C_BLUE}Usage:${NO_FORMAT} ${0} {help|download_sources|make_defconfig|make_menuconfig|make_kernel|make_anykernel3_zip}"
 	[[ -n "${1}" ]] && print_error "Invalid argument."
 }
 
+### Quiet pushd & popd ###
 pushd() { command pushd "$@" > /dev/null; }
 popd() { command popd "$@" > /dev/null; }
 
