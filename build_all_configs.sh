@@ -25,12 +25,13 @@ print_info "Building for all device configs in ${PWD}/device_configs/ ..."
 pushd "${PWD}/device_configs/"
     for device_config in *; do
         print_info "Now building ${device_config} ..."
-        cd ..
-        ln -sf "../device_configs/${device_config}" "./include/device_config.sh"
-        rm -rf "${_workdir}"
-        ./lineageos_kernel_builder.sh download_sources
-        ./lineageos_kernel_builder.sh make_kernel
-        ./lineageos_kernel_builder.sh make_anykernel3_zip
+        pushd ../
+            ln -sf "../device_configs/${device_config}" "./include/device_config.sh"
+            rm -rf "${_workdir}"
+            ./lineageos_kernel_builder.sh download_sources
+            ./lineageos_kernel_builder.sh make_kernel
+            ./lineageos_kernel_builder.sh make_anykernel3_zip
+        popd
     done
 popd
 
