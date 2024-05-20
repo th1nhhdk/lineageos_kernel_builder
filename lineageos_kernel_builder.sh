@@ -9,7 +9,6 @@ export _outdir="${PWD}/out"
 ### include ###
 source "$(dirname "${0}")"/include/config.sh
 source "$(dirname "${0}")"/include/device_config.sh
-export _kernel_path="${_workdir}/${kernel_dir}/${kernel_build_out_prefix}/arch/${device_arch}/boot/${kernel_image}"
 
 ### colors ###
 export NO_FORMAT="\033[0m"
@@ -86,8 +85,8 @@ integrate_kernelsu() {
 	    sed -i -e '/^CONFIG_KPROBES$/d' \
 	    	-e '/^CONFIG_HAVE_KPROBES$/d' \
 	    	-e '/^CONFIG_KPROBE_EVENTS$/d' \
-	    	./"arch/${device_arch}/configs/${device_defconfig}"
-        cat >> ./"arch/${device_arch}/configs/${device_defconfig}" << EOF
+            "${kernel_config_path}"
+        cat >> "${kernel_config_path}" << EOF
 CONFIG_KPROBES=y
 CONFIG_HAVE_KPROBES=y
 CONFIG_KPROBE_EVENTS=y
@@ -163,20 +162,20 @@ make_kernel() {
 
     if [ "${enable_anykernel3_zip}" = "false" ]; then
         [ ! -d "${_outdir}" ] && mkdir -p "${_outdir}"
-        cp "${_kernel_path}" "${_outdir}"
+        cp "${kernel_image_path}" "${_outdir}"
     fi
 }
 
 make_anykernel3_zip() {
     if [ "${enable_anykernel3_zip}" = "false" ]; then
         print_error "You didn't enable Making AnyKernel3 zip support, check $(dirname "${0}")/include/device_config.sh"
-    elif [ ! -f "${_kernel_path}" ]; then
-        print_error "Cannot find Kernel ${kernel_image}, have you run ${0} make_kernel ?"
+    elif [ ! -f "${kernel_image_path}" ]; then
+        print_error "Cannot find ${kernel_image_path}, have you run ${0} make_kernel ?"
     else
         [ ! -d "${_outdir}" ] && mkdir -p "${_outdir}"
         pushd "${_workdir}/AnyKernel3-${device_codename}"
             print_info "Making AnyKernel3 zip at ${_outdir}/${device_codename}-${kernel_version}-$(date +%F)-AnyKernel3.zip ..."
-            cp "${_kernel_path}" .
+            cp "${kernel_image_path}" .
             zip -qr9 "${_outdir}/${device_codename}-${kernel_version}-$(date +%F)-AnyKernel3.zip" * -x .git .gitignore
         popd
     fi

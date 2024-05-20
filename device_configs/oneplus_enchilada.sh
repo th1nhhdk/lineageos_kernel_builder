@@ -45,7 +45,9 @@ export kernel_cross_compile_arm32="${_workdir}/prebuilts/gcc/linux-x86/arm/arm-l
 export kernel_cross_compile_compat="${kernel_cross_compile_arm32}"
 export kernel_clang_triple="aarch64-linux-gnu-"
 export kernel_cc="'ccache clang --cuda-path=/dev/null'" # Without '' errors will happen
-export kernel_image="Image"
+export kernel_image_name="Image.gz-dtb" # BOARD_KERNEL_IMAGE_NAME
+export kernel_image_path="${_workdir}/${kernel_dir}/${kernel_build_out_prefix}/arch/${device_arch}/boot/${kernel_image_name}"
+export kernel_config_path="./arch/${device_arch}/configs/${device_defconfig}"
 
 download_kernel() {
     if [ ! -d "${_workdir}/${kernel_dir}" ]; then
