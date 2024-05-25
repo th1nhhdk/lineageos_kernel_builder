@@ -50,13 +50,20 @@ export kernel_image_path="${_workdir}/${kernel_dir}/${kernel_build_out_prefix}/a
 export kernel_config_path="./arch/${device_arch}/configs/${device_defconfig}"
 
 download_kernel() {
+    if [ "${shallow_clone}" = "true" ]; then
+        local extra_git_arguments="--depth 1 --shallow-submodules"
+    else
+        local extra_git_arguments=""
+    fi
+
     if [ ! -d "${_workdir}/${kernel_dir}" ]; then
         git clone --recurse-submodules \
             -b "$kernel_branch" \
+            ${extra_git_arguments} \
             "https://github.com/th1nhhdk/${kernel_dir}.git" \
             "${_workdir}/${kernel_dir}"
     else
-        print_info "${_workdir}/${kernel_dir} is already there, skipping..."
+        print_info "${_workdir}/${kernel_dir} already exists, skipping..."
     fi
 }
 
