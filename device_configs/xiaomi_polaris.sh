@@ -26,17 +26,17 @@ export integrate_kernelsu="true"
 export enable_anykernel3_zip="true" # Create a AnyKernel3 zip containing the built Kernel
 
 ### Kernel configuration ###
-export kernel_dir="android_kernel_oneplus_sdm845"
+export kernel_dir="android_kernel_xiaomi_sdm845"
 export kernel_branch="lineage-21"
-export device_codename="enchilada"
+export device_codename="polaris"
 export device_arch="arm64"
-export device_defconfig="enchilada_defconfig vendor/debugfs.config" # fajita use the same Kernel & defconfig
+export device_defconfig="vendor/xiaomi/mi845_defconfig vendor/xiaomi/polaris.config" # TARGET_KERNEL_CONFIG
 
-# from LineageOS/android_kernel_oneplus_sdm845/arch/arm64/configs/enchilada_defconfig
+# from LineageOS/android_kernel_xiaomi_sdm845/arch/arm64/configs/vendor/xiaomi/mi845_defconfig
 if [ "${add_ksu_text}" = "true" ]; then
-    export kernel_version="4.9.337-ksu"
+    export kernel_version="4.9.337-ksu-perf"
 else
-    export kernel_version="4.9.337"
+    export kernel_version="4.9.337-perf"
 fi
 
 export kernel_build_out_prefix="out"
@@ -47,7 +47,7 @@ export kernel_clang_triple="aarch64-linux-gnu-"
 export kernel_cc="'ccache clang --cuda-path=/dev/null'" # Without '' errors will happen
 export kernel_image_name="Image.gz-dtb" # BOARD_KERNEL_IMAGE_NAME
 export kernel_image_path="${_workdir}/${kernel_dir}/${kernel_build_out_prefix}/arch/${device_arch}/boot/${kernel_image_name}"
-export kernel_config_path="./arch/${device_arch}/configs/enchilada_defconfig"
+export kernel_config_path="./arch/${device_arch}/configs/vendor/xiaomi/mi845_defconfig"
 
 download_kernel() {
     if [ ! -d "${_workdir}/${kernel_dir}" ]; then
