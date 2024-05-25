@@ -25,6 +25,7 @@ export download_kernel_build_tools="true"
 export integrate_kernelsu="true"
 export enable_anykernel3_zip="true" # Create a AnyKernel3 zip containing the built Kernel
 export is_linux_4_9="true" # Linux 4.9 ONLY!!! Patch security/selinux/hooks.c so that KernelSU modules work
+export backport_path_umount="true" # backport path_umount from Linux 5.9 to fs/namespace.c
 
 ### Kernel configuration ###
 export kernel_dir="android_kernel_xiaomi_sdm845"
@@ -64,6 +65,7 @@ download_kernel() {
             "${_workdir}/${kernel_dir}"
 
         [ "${is_linux_4_9}" = "true" ] && patch -Np1 -d "${_workdir}/${kernel_dir}" -i "${_patchdir}/linux_4_9_selinux_hooks.patch"
+        [ "${backport_path_umount}" = "true" ] && patch -Np1 -d "${_workdir}/${kernel_dir}" -i "${_patchdir}/backport_path_umount.patch"
     else
         print_info "${_workdir}/${kernel_dir} already exists, skipping..."
     fi
