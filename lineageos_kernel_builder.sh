@@ -5,6 +5,7 @@ set -e
 export _workdir="${PWD}/build"
 export _cachedir="${PWD}/cache"
 export _outdir="${PWD}/out"
+export _patchdir="${PWD}/patches"
 
 ### include ###
 source "$(dirname "${0}")"/include/config.sh
