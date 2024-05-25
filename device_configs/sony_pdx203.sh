@@ -24,6 +24,8 @@ export download_kernel_build_tools="true"
 ### Configuration options ###
 export integrate_kernelsu="false" # KernelSU is already intergrated in kernel sources
 export enable_anykernel3_zip="true" # Create a AnyKernel3 zip containing the built Kernel
+export is_linux_4_9="false"
+export backport_path_umount="false" # The patch is already intergrated in kernel sources
 
 ### Kernel configuration ###
 export kernel_dir="android_kernel_sony_sm8250-kernelsu"
