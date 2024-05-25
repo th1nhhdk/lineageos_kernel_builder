@@ -53,7 +53,7 @@ export kernel_config_path="./arch/${device_arch}/configs/enchilada_defconfig"
 
 download_kernel() {
     if [ "${shallow_clone}" = "true" ]; then
-        local extra_git_arguments="--depth 1 --shallow-submodules"
+        local extra_git_arguments="--depth 1"
     else
         local extra_git_arguments=""
     fi
