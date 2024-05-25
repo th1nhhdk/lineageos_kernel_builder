@@ -3,10 +3,10 @@ Bash script to build a custom LineageOS Kernel without having to download unnece
 
 ## Supported devices ##
 - Sony Xperia 1 II (`pdx203`)
-- Sony Xperia 5 II (`pdx206`) (untested, but should work)
+- Sony Xperia 5 II (`pdx206`) (not regularly tested, should work)
 - OnePlus 6 (`enchilada`) (untested)
 - OnePlus 6T (`fajita`) (untested)
-- Xiaomi Mi Mix 2S (`polaris`)
+- Xiaomi Mi Mix 2S (`polaris`) (not regularly tested, should work)
 
 ## How to use ##
 - Check `./config.sh` for configuration options.
