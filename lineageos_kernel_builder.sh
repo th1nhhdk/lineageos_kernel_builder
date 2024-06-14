@@ -77,7 +77,7 @@ integrate_kernelsu() {
     if [ ! -d "${_workdir}/${kernel_dir}/KernelSU" ]; then
         pushd "${_workdir}/${kernel_dir}"
 	    	print_info "Intergrating KernelSU into the kernel source code..."
-	    	curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+	    	curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
 	    popd
     fi
 
