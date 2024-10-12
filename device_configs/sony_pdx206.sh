@@ -1,6 +1,6 @@
 ### from LineageOS/android/default.xml ###
 export lineageos_branch="lineage-21.0"
-export aosp_tag="android-14.0.0_r50"
+export aosp_tag="android-14.0.0_r67"
 export aosp_tag2="android-14.0.0_r0.76"
 
 ### from LineageOS/android/snippets/lineage.xml ###
