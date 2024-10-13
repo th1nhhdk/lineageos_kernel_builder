@@ -36,9 +36,9 @@ export device_defconfig="pdx206_defconfig"
 
 # from LineageOS/android_kernel_sony_sm8250/arch/arm64/configs/pdx203_defconfig
 if [ "${add_ksu_text}" = "true" ]; then
-    export kernel_version="4.19.306-ksu-perf"
+    export kernel_version="4.19.318-ksu-perf"
 else
-    export kernel_version="4.19.306-perf"
+    export kernel_version="4.19.318-perf"
 fi
 
 export kernel_build_out_prefix="out"
